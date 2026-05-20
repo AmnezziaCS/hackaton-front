@@ -1,21 +1,19 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/admin/Navbar";
+import Sidebar from "../components/admin/Sidebar";
 
 export default function AdminLayout() {
   return (
-    <div className="flex min-h-screen">
-      <aside className="w-64 bg-black text-white p-4">
-        <h2 className="mb-6 text-2xl font-bold">Admin</h2>
+    <div className="flex min-h-screen bg-gray-100">
+      <Sidebar />
 
-        <nav className="flex flex-col gap-4">
-          <Link to="/admin">Dashboard</Link>
-          <Link to="/admin/users">Users</Link>
-          <Link to="/admin/jobs">Jobs</Link>
-        </nav>
-      </aside>
+      <div className="flex flex-1 flex-col">
+        <Navbar />
 
-      <main className="flex-1 bg-gray-100 p-6">
-        <Outlet />
-      </main>
+        <main className="flex-1 p-6">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "j1",
+    "title": "Frontend Developer Intern",
+    "company": "TechNova",
+    "status": "PENDING",
+    "expiration": "2026-08-30"
+  },
+  {
+    "id": "j2",
+    "title": "Backend Developer",
+    "company": "CloudEdge",
+    "status": "APPROVED",
+    "expiration": "2026-07-15"
+  },
+  {
+    "id": "j3",
+    "title": "Data Analyst Junior",
+    "company": "Insight Labs",
+    "status": "REJECTED",
+    "expiration": "2026-06-20"
+  }
+]

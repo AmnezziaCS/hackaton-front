@@ -1,0 +1,38 @@
+[
+  {
+    "id": "u1",
+    "name": "Admin One",
+    "email": "admin@jobboard.com",
+    "password": "admin123",
+    "role": "ADMIN",
+    "createdAt": "2026-01-10",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "u2",
+    "name": "Student One",
+    "email": "student@jobboard.com",
+    "password": "student123",
+    "role": "STUDENT",
+    "createdAt": "2026-01-15",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "u3",
+    "name": "Company Manager",
+    "email": "company@jobboard.com",
+    "password": "company123",
+    "role": "COMPANY",
+    "createdAt": "2026-02-01",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "u4",
+    "name": "School Admin",
+    "email": "school@jobboard.com",
+    "password": "school123",
+    "role": "SCHOOL",
+    "createdAt": "2026-02-11",
+    "status": "SUSPENDED"
+  }
+]

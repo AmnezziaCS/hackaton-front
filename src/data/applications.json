@@ -1,0 +1,14 @@
+[
+  {
+    "id": "a1",
+    "userId": "u2",
+    "jobId": "j1",
+    "status": "PENDING"
+  },
+  {
+    "id": "a2",
+    "userId": "u2",
+    "jobId": "j2",
+    "status": "REVIEWED"
+  }
+]

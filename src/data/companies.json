@@ -1,0 +1,14 @@
+[
+  {
+    "id": "c1",
+    "name": "TechNova",
+    "sector": "Software",
+    "website": "https://technova.example"
+  },
+  {
+    "id": "c2",
+    "name": "CloudEdge",
+    "sector": "Cloud",
+    "website": "https://cloudedge.example"
+  }
+]
