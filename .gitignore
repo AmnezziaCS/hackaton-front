@@ -1,0 +1,49 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Build folders
+dist
+build
+
+# Environment files
+.env.*
+
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Vite
+vite.config.ts.timestamp-*
+
+# Tailwind cache
+.tailwindcss/
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+Thumbs.db
+
+# Package lock files (optionnel selon équipe)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
