@@ -5,9 +5,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#F4F6FB]">
-      {/* Hero */}
       <div className="px-8 pt-16 pb-12 max-w-4xl mx-auto">
-        <div className="inline-block bg-[#00296B] text-[#FFC300] text-xs font-medium px-3 py-1 rounded mb-8 tracking-widest uppercase">
+        <div className="inline-block bg-[#00296B] text-white text-xs font-medium px-3 py-1 rounded mb-8 tracking-widest uppercase">
           Alternance & Stage · France
         </div>
 

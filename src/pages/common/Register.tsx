@@ -12,15 +12,70 @@ const profiles = [
 export default function Register() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<ProfileType>(null);
-  const [, setForm] = useState<Record<string, string | boolean>>({});
+  const [form, setForm] = useState<Record<string, string>>({});
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      let url = "";
+      let body = {};
+
+      if (selected === "student") {
+        url = "http://localhost:3001/students/signup";
+        body = {
+          email: form.email,
+          password: form.password,
+          name: form.name,
+          surname: form.surname,
+          dateOfBirth: form.dateOfBirth,
+          address: form.address,
+        };
+      } else if (selected === "company") {
+        url = "http://localhost:3003/companies/signup";
+        body = {
+          email: form.email,
+          password: form.password,
+          name: form.name,
+          siret: form.siret,
+        };
+      } else if (selected === "school") {
+        url = "http://localhost:3002/schools/signup";
+        body = {
+          email: form.email,
+          password: form.password,
+          name: form.name,
+          siret: form.siret,
+        };
+      }
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.message || "Une erreur est survenue.");
+      } else {
+        navigate("/login");
+      }
+    } catch {
+      setError("Impossible de contacter le serveur.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#F4F6FB] flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 w-full max-w-md p-8">
         <h1 className="text-2xl font-medium text-gray-900 mb-1">Créer un compte</h1>
         <p className="text-sm text-gray-500 mb-6">
@@ -45,25 +100,21 @@ export default function Register() {
                 </div>
               ))}
             </div>
-
             <p className="text-xs text-center text-gray-500 mt-6">
               Déjà un compte ?{" "}
-              <span
-                onClick={() => navigate("/login")}
-                className="text-[#00296B] font-medium cursor-pointer hover:underline"
-              >
+              <span onClick={() => navigate("/login")} className="text-[#00296B] font-medium cursor-pointer hover:underline">
                 Se connecter
               </span>
             </p>
           </>
         ) : (
           <div className="flex flex-col gap-4">
-            <button
-              onClick={() => setSelected(null)}
-              className="text-xs text-gray-400 hover:text-[#00296B] w-fit"
-            >
+            <button onClick={() => setSelected(null)} className="text-xs text-gray-400 hover:text-[#00296B] w-fit">
               ← Changer de profil
             </button>
+
+            <Field label="Email" name="email" type="email" onChange={handleChange} />
+            <Field label="Mot de passe" name="password" type="password" onChange={handleChange} />
 
             {selected === "student" && (
               <>
@@ -75,22 +126,25 @@ export default function Register() {
             )}
 
             {selected === "company" && (
-              <>
-                <Field label="Nom de l'entreprise" name="name" onChange={handleChange} />
-                <Field label="Adresse" name="address" onChange={handleChange} />
-                <Field label="Numéro de Siret" name="siret" onChange={handleChange} />
-              </>
+              <Field label="Nom de l'entreprise" name="name" onChange={handleChange} />
             )}
 
             {selected === "school" && (
-              <>
-                <Field label="Nom de l'école" name="name" onChange={handleChange} />
-                <Field label="Adresse" name="address" onChange={handleChange} />
-              </>
+              <Field label="Nom de l'école" name="name" onChange={handleChange} />
             )}
 
-            <button className="bg-[#FFC300] hover:bg-[#E6B000] text-[#00296B] px-6 py-2.5 rounded-lg text-sm font-medium mt-2">
-              Créer mon compte
+            {(selected === "company" || selected === "school") && (
+              <Field label="Numéro de Siret" name="siret" onChange={handleChange} />
+            )}
+
+            {error && <p className="text-xs text-red-500">{error}</p>}
+
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              className="bg-[#FFC300] hover:bg-[#E6B000] text-[#00296B] px-6 py-2.5 rounded-lg text-sm font-medium mt-2 disabled:opacity-50"
+            >
+              {loading ? "Chargement..." : "Créer mon compte"}
             </button>
           </div>
         )}
