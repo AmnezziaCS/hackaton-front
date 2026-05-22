@@ -8,7 +8,7 @@ export default function MainLayout() {
       <header className="border-b border-gray-100 bg-white sticky top-0 z-10">
         <div className="max-w-4xl mx-auto flex items-center justify-between px-8 py-4">
           <Link to="/" className="text-lg font-bold text-[#00296B] tracking-tight">
-            Job<span className="text-[#FFC300]">Board</span>
+            goto<span className="text-[#FFC300]">job</span>
           </Link>
 
           <nav className="flex items-center gap-6">
