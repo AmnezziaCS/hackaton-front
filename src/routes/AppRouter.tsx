@@ -11,6 +11,7 @@ import AdminJobs from "../pages/admin/Jobs";
 import Home from "../pages/common/Home";
 import Jobs from "../pages/admin/Jobs";
 import Login from "../pages/common/Login";
+import Register from "../pages/common/Register";
 
 export default function AppRouter() {
   return (
@@ -23,6 +24,7 @@ export default function AppRouter() {
           <Route path="/" element={<Home />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
         </Route>
 
         {/* Admin */}
